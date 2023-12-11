@@ -39,3 +39,6 @@ testem.log
 Thumbs.db
 
 .nx/cache
+
+# contains access tokens for nx cloud
+nx-cloud.env 
