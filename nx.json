@@ -12,5 +12,8 @@
       "cache": true
     }
   },
+  "plugins": [
+    "@nxlv/python"
+  ],
   "nxCloudAccessToken": "MWVhMGM2NTgtZTY1Yy00ZGM0LWE2YTAtNzlhZDVmZWFjMzVkfHJlYWQtd3JpdGU="
 }

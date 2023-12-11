@@ -4,9 +4,9 @@
   "license": "MIT",
   "scripts": {},
   "private": true,
-  "dependencies": {},
   "devDependencies": {
     "@nx/js": "17.2.0",
+    "@nxlv/python": "^16.3.1",
     "nx": "17.2.0"
   },
   "workspaces": [
