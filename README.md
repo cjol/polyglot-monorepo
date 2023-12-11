@@ -38,3 +38,7 @@ Notable things:
 - I've disabled lints, tests and code coverage to keep this minimal. I'll want to learn how to add those myself later.
 - I bumped the Python version because I don't have the default version installed.
 - I've set the project directory to include a `python/libs` prefix because I want to keep different languages separate in future.
+
+# Generating a Python app
+
+Same as above but with `--projectType=application` and `--directory=python/apps/pythonapp`
