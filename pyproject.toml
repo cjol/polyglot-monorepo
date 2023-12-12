@@ -2,7 +2,7 @@
 autoActivate = true
 
 [tool.poetry]
-name = "pymonorepo"
+name = "polyglotmonorepo"
 version = "1.0.0"
 description = ""
 authors = []

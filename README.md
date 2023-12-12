@@ -1,4 +1,4 @@
-# Pymonorepo
+# polyglotmonorepo
 
 NX is a good tool for managing monorepos. IT's complex to configure, which the community has solved by using generators. This hides the complexity, but swtill makes it difficult to understand what is going on.
 
@@ -7,7 +7,7 @@ In this repo, I'm going to use the generators but try to keep everything documen
 # Steps
 
 ```
-npx create-nx-workspace pymonorepo --preset=npm
+npx create-nx-workspace polyglotmonorepo --preset=npm
 ```
 
 This creates an initial nx workspace. It prompts me about distributed caching, which I enabled. It has created:
