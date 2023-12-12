@@ -23,6 +23,12 @@ jobs:
           cache: 'npm'
       - run: npm ci
 
+      # Works out the last successful build for `affected`
+      - uses: nrwl/nx-set-shas@v3
+
+      # This line is needed for nx affected to work when CI is running on a PR
+      - run: git branch --track main origin/main
+
       # Setup python deps
       - uses: actions/setup-python@v2
         with:
@@ -37,13 +43,8 @@ jobs:
         with:
           path: .venv
           key: pydeps-${{ hashFiles('**/poetry.lock') }}
-      - run: npx nx run-many -t install -p="tag:python"
-
-      # Works out the last successful build for `affected`
-      - uses: nrwl/nx-set-shas@v3
-
-      # This line is needed for nx affected to work when CI is running on a PR
-      - run: git branch --track main origin/main
+      # only install deps for affected projects
+      - run: npx nx affected -t install --exclude="*,!tag:python"
 
       # Actually execute our pipelines (here lint and build)
       - run: npx nx affected -t lint,build --parallel=3
