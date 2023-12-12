@@ -53,3 +53,10 @@ nx build pythonapp
 This can also be done from the VS Code extension (after refreshing the project tree).
 
 Note that re-running these tasks once does not return a cached result. That's because the first invocation creates a new poetry.lock file, which then busts the cache for the second invocation. The third+ invocations returns a cached result as expected.
+
+# Running python app
+
+I couldn't see a builtin way of actually running our application, so I've added a main file and an executor called `dev` inside the project.json for the pythonapp. It's just running a shell command so nothing fancy.
+
+I can now run the app with `nx run pythonapp:dev`
+(or again through the UI). I expect I could run dependent projects by specifying dependencies in the `nx.json` file, but I haven't tried that yet(partly because we have no dependencies yet). This could be useful for e.g. watch-mode compilation of libraries.

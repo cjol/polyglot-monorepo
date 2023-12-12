@@ -4,6 +4,13 @@
   "projectType": "application",
   "sourceRoot": "python/apps/pythonapp/pythonapp",
   "targets": {
+    "dev": {
+      "executor": "@nxlv/python:run-commands",
+      "options": {
+        "command": "poetry run python -m pythonapp",
+        "cwd": "python/apps/pythonapp"
+      }
+    },
     "lock": {
       "executor": "@nxlv/python:run-commands",
       "options": {

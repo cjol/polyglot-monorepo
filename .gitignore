@@ -42,3 +42,6 @@ Thumbs.db
 
 # contains access tokens for nx cloud
 nx-cloud.env 
+
+# Python
+__pycache__
