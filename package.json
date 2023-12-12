@@ -24,7 +24,8 @@
     "typescript": "~5.2.2"
   },
   "workspaces": [
-    "packages/*"
+    "typescript/apps/*",
+    "typescript/libs/*"
   ],
   "dependencies": {
     "tslib": "^2.3.0"
