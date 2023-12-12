@@ -37,7 +37,8 @@ jobs:
         with:
           path: .venv
           key: pydeps-${{ hashFiles('**/poetry.lock') }}
-      - run: npx nx run-many -t install -p="tag:python"
+      # only install deps for affected projects
+      - run: nx affected -t install --exclude="*,\!tag:python"
 
       # Works out the last successful build for `affected`
       - uses: nrwl/nx-set-shas@v3
