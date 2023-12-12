@@ -42,3 +42,14 @@ Notable things:
 # Generating a Python app
 
 Same as above but with `--projectType=application` and `--directory=python/apps/pythonapp`
+
+# Building the python projects
+
+```
+nx build pythonlib
+nx build pythonapp
+```
+
+This can also be done from the VS Code extension (after refreshing the project tree).
+
+Note that re-running these tasks once does not return a cached result. That's because the first invocation creates a new poetry.lock file, which then busts the cache for the second invocation. The third+ invocations returns a cached result as expected.
