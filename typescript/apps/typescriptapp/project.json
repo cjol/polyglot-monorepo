@@ -1,0 +1,60 @@
+{
+  "name": "typescriptapp",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "typescript/apps/typescriptapp/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "platform": "node",
+        "outputPath": "dist/typescript/apps/typescriptapp",
+        "format": ["cjs"],
+        "bundle": false,
+        "main": "typescript/apps/typescriptapp/src/main.ts",
+        "tsConfig": "typescript/apps/typescriptapp/tsconfig.app.json",
+        "assets": ["typescript/apps/typescriptapp/src/assets"],
+        "generatePackageJson": true,
+        "esbuildOptions": {
+          "sourcemap": true,
+          "outExtension": {
+            ".js": ".js"
+          }
+        }
+      },
+      "configurations": {
+        "development": {},
+        "production": {
+          "esbuildOptions": {
+            "sourcemap": false,
+            "outExtension": {
+              ".js": ".js"
+            }
+          }
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "typescriptapp:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "typescriptapp:build:development"
+        },
+        "production": {
+          "buildTarget": "typescriptapp:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    }
+  },
+  "tags": []
+}
