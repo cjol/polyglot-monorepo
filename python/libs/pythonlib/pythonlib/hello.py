@@ -3,4 +3,4 @@
 
 def libhello():
     """Return a friendly greeting."""
-    return "Hello from pythonlib"
+    return "A novel greeting from pythonlib"
