@@ -1,0 +1,24 @@
+{
+  "name": "typescriptlib",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "typescript/libs/typescriptlib/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/typescript/libs/typescriptlib",
+        "tsConfig": "typescript/libs/typescriptlib/tsconfig.lib.json",
+        "packageJson": "typescript/libs/typescriptlib/package.json",
+        "main": "typescript/libs/typescriptlib/src/index.ts",
+        "assets": ["typescript/libs/typescriptlib/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    }
+  },
+  "tags": []
+}

@@ -16,5 +16,10 @@
       ]
     }
   },
-  "plugins": ["@nxlv/python"]
+  "plugins": ["@nxlv/python"],
+  "pluginsConfig": {
+    "@nx/js": {
+      "analyzeSourceFiles": true
+    }
+  }
 }
