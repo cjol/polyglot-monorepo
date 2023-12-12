@@ -1,3 +1,3 @@
 export function typescriptlib(): string {
-  return 'typescriptlib';
+  return 'TS Lib';
 }
