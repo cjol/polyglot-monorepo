@@ -1,0 +1,38 @@
+name: CI
+on:
+  push:
+    branches:
+      # Change this if your primary branch is not main
+      - main
+  pull_request:
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # Setup node deps
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          cache: 'npm'
+      - run: npm ci
+
+      # Setup python deps
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          cache: 'npm'
+      - run: npm ci
+
+      # Works out the last successful build for `affected`
+      - uses: nrwl/nx-set-shas@v3
+
+      # This line is needed for nx affected to work when CI is running on a PR
+      - run: git branch --track main origin/main
+
+      # Actually execute our pipelines (here lint and build)
+      - run: npx nx affected -t lint,build --parallel=3
