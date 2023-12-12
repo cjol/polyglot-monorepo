@@ -78,3 +78,13 @@ There is a bit of a problem because VS Code can't cope with the virtualenvs invo
 Instead, one option is to tell poetry to use a shared venv for all projects in development. nx will still isolate and bundle deps correctl when bundling for production. Theres a list of pros and cons here: https://github.com/lucasvieirasilva/nx-plugins/blob/main/packages/nx-python/README.md#shared-virtual-environment
 
 For now, I'm swayed by the argument that it's easier to debug and develop when all projects are in the same venv, so I'll try that setup next.
+
+# Shared Venvs
+
+```
+npx nx generate @nxlv/python:migrate-to-shared-venv  --pyenvPythonVersion=3.11.2 --pyprojectPythonDependency=">=3.9,<3.12"
+```
+
+This seems to have resolved the VS Code import errors (although there's now one about type stubs so I guess the lib build script needs to be updated to include those). I assume that future dependencies will be added as appropriate.
+
+Again I have only overriden the python version parameters.
