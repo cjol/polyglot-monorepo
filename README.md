@@ -60,3 +60,21 @@ I couldn't see a builtin way of actually running our application, so I've added 
 
 I can now run the app with `nx run pythonapp:dev`
 (or again through the UI). I expect I could run dependent projects by specifying dependencies in the `nx.json` file, but I haven't tried that yet(partly because we have no dependencies yet). This could be useful for e.g. watch-mode compilation of libraries.
+
+# Declaring internal dependencies
+
+The main event: can we set up internal dependencies in such a way that nx automatically runs dependent tasks when we build a project? Nx wraps the dependency management commands to make things easier for us, so I run
+
+```
+nx run pythonapp:add --name pythonlib --local
+```
+
+This has added the dependency to pythonapp's `pyproject.toml` (and updated the poetry.lock file). I now make some code changes to pythonapp to actually import and use pythonlib, and then run `nx run pythonapp:dev` again -- it works first time, so Poetry has correctly installed the dependency. Similarly, I can now run `nx run pythonapp:build` and it first builds the library and then the app (and then caches the result for the second run).
+
+> > NX Successfully ran target build for project pythonapp and 1 task it depends on (1s)
+
+There is a bit of a problem because VS Code can't cope with the virtualenvs involved here. NX has created a new venv for both the app and the lib, but VS Code doesn't know about them. This means that I get import errors highlighted in my code in the app's mainfile (because it doesn't know where to find pythonlib). I could tell VS Code where to find the pythonapp venv, but then I'd have to change context each time I wanted to work on a different project.
+
+Instead, one option is to tell poetry to use a shared venv for all projects in development. nx will still isolate and bundle deps correctl when bundling for production. Theres a list of pros and cons here: https://github.com/lucasvieirasilva/nx-plugins/blob/main/packages/nx-python/README.md#shared-virtual-environment
+
+For now, I'm swayed by the argument that it's easier to debug and develop when all projects are in the same venv, so I'll try that setup next.

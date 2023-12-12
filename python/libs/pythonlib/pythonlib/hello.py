@@ -1,6 +1,6 @@
-"""Sample Hello World application."""
+"""Sample Hello World library."""
 
 
-def hello():
+def libhello():
     """Return a friendly greeting."""
-    return "Hello pythonlib"
+    return "Hello from pythonlib"
